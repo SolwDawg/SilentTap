@@ -25,23 +25,24 @@ export default function RootLayout() {
   }, [fontsLoaded, fontError]);
 
   const showAnimatedSplash = !appReady || !splashAnimationFinished;
-  if (showAnimatedSplash) {
-    return (
-      <AnimatedSplashScreen
-        onAnimationFinish={(isCancelled) => {
-          if (!isCancelled) {
-            setSplashAnimationFinished(true);
-          }
-        }}
-      />
-    );
-  }
+  // if (showAnimatedSplash) {
+  //   return (
+  //     <AnimatedSplashScreen
+  //       onAnimationFinish={(isCancelled) => {
+  //         if (!isCancelled) {
+  //           setSplashAnimationFinished(true);
+  //         }
+  //       }}
+  //     />
+  //   );
+  // }
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Animated.View style={{ flex: 1 }} entering={FadeIn}>
         <Stack>
           <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         </Stack>
       </Animated.View>
     </GestureHandlerRootView>

@@ -2,8 +2,11 @@ import { Image, View, Text, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TapBtn } from "@/components/TapBtn";
 import { useState } from "react";
+import { useRouter } from "expo-router";
 
-export default function Index() {
+export default function index() {
+  const router = useRouter();
+
   const [countTapBtn, setCountTapBtn] = useState(0);
   const [countToNavigate, setCountToNavigate] = useState(0);
 
@@ -14,6 +17,7 @@ export default function Index() {
   const handleCountNavigate = () => {
     setCountToNavigate(countToNavigate + 1);
     if (countToNavigate == 3) {
+      router.push("/(tabs)");
     }
   };
   return (
