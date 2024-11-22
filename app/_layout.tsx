@@ -42,7 +42,8 @@ export default function RootLayout() {
       <Animated.View style={{ flex: 1 }} entering={FadeIn}>
         <Stack>
           <Stack.Screen name="index" options={{ headerShown: false }} />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+          <Stack.Screen name="(recording)" options={{ headerShown: false }} />
         </Stack>
       </Animated.View>
     </GestureHandlerRootView>

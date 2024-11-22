@@ -27,7 +27,61 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": ["expo-router", "expo-font"],
+    "expo": {
+      "plugins": [
+        [
+          "@rnmapbox/maps",
+          {
+            "RNMapboxMapsDownloadToken": "sk.eyJ1Ijoic29sdyIsImEiOiJjbTJ2bGpxdDMwY3p3MmlzODd6amduN2Q0In0.bJ9AaVJIOYgH50-MPZilgw",
+            "RNMapboxMapsVersion": "11.0.0"
+          }
+        ],
+        [
+          "expo-location",
+          {
+            "locationWhenInUsePermission": "Show current location on map."
+          }
+        ],
+        [
+          "expo-av",
+          {
+            "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
+          }
+        ]
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsDownloadToken": "sk.eyJ1Ijoic29sdyIsImEiOiJjbTJ2bGpxdDMwY3p3MmlzODd6amduN2Q0In0.bJ9AaVJIOYgH50-MPZilgw",
+          "RNMapboxMapsVersion": "11.0.0"
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Show current location on map."
+        }
+      ],
+      [
+        "react-native-vision-camera",
+        {
+          "cameraPermissionText": "$(PRODUCT_NAME) needs access to your Camera.",
+          "enableMicrophonePermission": true,
+          "microphonePermissionText": "$(PRODUCT_NAME) needs access to your Microphone.",
+          "enableCodeScanner": true
+        }
+      ],
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
+        }
+      ]
+    ],
     "experiments": {
       "typedRoutes": true
     }

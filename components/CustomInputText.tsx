@@ -4,8 +4,11 @@ import {
   View,
   TextInputProps,
   TextInput,
+  Image,
 } from "react-native";
 import React from "react";
+
+import Feather from "@expo/vector-icons/Feather";
 
 type CustomInputTextProps = {
   label: string;
@@ -25,49 +28,16 @@ const CustomInputText = (props: CustomInputTextProps) => {
     ...restProps
   } = props;
 
-  const [hidePassword, setHidePassword] = React.useState(password);
-  const [isFocused, setIsFocused] = React.useState(false);
-
   return (
-    <View style={{ marginBottom: 20 }}>
-      <Text style={styles.label}>{label}</Text>
-      <View
-        style={[
-          styles.inputContainer,
-          {
-            borderColor: error ? "red" : isFocused ? "blue" : "#ccc",
-            alignItems: "center",
-          },
-        ]}
-      >
-        {/* <Icon
-          name={iconName}
-          style={{ color: COLORS.darkBlue, fontSize: 22, marginRight: 10 }}
-        /> */}
+    <View>
+      <View style={styles.inputContainer}>
+        <Feather name="user" size={24} color="black" />
         <TextInput
-          autoCorrect={false}
-          onFocus={() => {
-            onFocus();
-            setIsFocused(true);
-          }}
-          onBlur={() => setIsFocused(false)}
-          secureTextEntry={hidePassword}
-          style={{ color: "blue", flex: 1 }}
-          {...props}
+          style={styles.input}
+          placeholder="Nhập tên người gọi"
+          accessibilityLabel="Enter caller's name"
         />
-        {/* {password && (
-          <Icon
-            onPress={() => setHidePassword(!hidePassword)}
-            name={hidePassword ? "eye-outline" : "eye-off-outline"}
-            style={{ color: COLORS.darkBlue, fontSize: 22 }}
-          />
-        )} */}
       </View>
-      {/* {error && (
-        <Text style={{ marginTop: 7, color: COLORS.red, fontSize: 12 }}>
-          {error}
-        </Text>
-      )} */}
     </View>
   );
 };
@@ -75,16 +45,43 @@ const CustomInputText = (props: CustomInputTextProps) => {
 export default CustomInputText;
 
 const styles = StyleSheet.create({
-  label: {
-    marginVertical: 5,
-    fontSize: 14,
-    color: "gray",
-  },
+  // container: {
+  //   borderTopLeftRadius: 0,
+  //   borderTopRightRadius: 0,
+  //   borderBottomRightRadius: 0,
+  //   borderBottomLeftRadius: 0,
+  //   display: "flex",
+  //   maxWidth: 340,
+  //   flexDirection: "column",
+  //   alignItems: "stretch",
+  //   fontFamily: "Roboto, sans-serif",
+  //   fontSize: 16,
+  //   color: "rgba(9, 16, 87, 0.7)",
+  //   fontWeight: "500",
+  //   letterSpacing: -0.32,
+  // },
   inputContainer: {
-    height: 55,
-    backgroundColor: "#ccc",
+    borderRadius: 13,
+    borderColor: "rgba(2, 76, 170, 0.44)",
+    borderStyle: "solid",
+    borderWidth: 1,
+    display: "flex",
+    paddingLeft: 17,
+    paddingRight: 17,
+    paddingTop: 13,
+    paddingBottom: 13,
+    alignItems: "center",
     flexDirection: "row",
-    paddingHorizontal: 15,
-    borderWidth: 0.5,
+    gap: 19,
+  },
+  userIcon: {
+    width: 16,
+    aspectRatio: 0.94,
+  },
+  input: {
+    flexGrow: 1,
+    flexShrink: 1,
+    width: 268,
+    flexBasis: "auto",
   },
 });

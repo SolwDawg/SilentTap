@@ -1,26 +1,22 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
-import {
-  AntDesign,
-  Entypo,
-  Feather,
-  FontAwesome,
-  Ionicons,
-} from "@expo/vector-icons";
+import { FontAwesome5, Ionicons, MaterialIcons } from "@expo/vector-icons";
 
 const TabStructure = () => {
+  const pagesToHideTabBar = ["fakecall", "recording", "chat", "sos"];
   return (
     <Tabs
       screenOptions={({ route }) => ({
-        tabBarInactiveTintColor: "black",
+        tabBarInactiveTintColor: "#DBD3D3",
         tabBarHideOnKeyboard: true,
         tabBarStyle: {
-          height: 70,
-          display: route.name === "fakecall" ? "none" : "flex",
+          height: 90,
+          backgroundColor: "#091057",
+          display: pagesToHideTabBar.includes(route.name) ? "none" : "flex",
         },
         tabBarLabelStyle: {
-          fontSize: 13,
+          fontSize: 15,
           fontWeight: "bold",
           marginTop: -10,
           marginBottom: 8,
@@ -30,10 +26,18 @@ const TabStructure = () => {
       <Tabs.Screen
         name="index"
         options={{
-          tabBarLabel: "Home",
+          headerShown: false,
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="sensors"
+        options={{
+          headerShown: false,
+          tabBarLabel: "cứu trợ",
           tabBarActiveTintColor: "#EB3030",
           tabBarIcon: ({ color }) => (
-            <Entypo name="home" size={24} color={color} />
+            <MaterialIcons name="sensors" size={32} color={color} />
           ),
         }}
       />
@@ -41,32 +45,38 @@ const TabStructure = () => {
         name="fakecall"
         options={{
           headerShown: false,
-          tabBarLabel: "Cuộc gọi giả",
+          tabBarLabel: "gọi giả",
           tabBarActiveTintColor: "#EB3030",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="heart" size={24} color={color} />
+            <Ionicons name="call" size={32} color={color} />
           ),
         }}
       />
+
       <Tabs.Screen
         name="sos"
         options={{
+          headerShown: false,
           tabBarLabel: () => null,
           tabBarInactiveTintColor: "black",
           tabBarIcon: ({ focused }) => (
             <View
               style={{
-                top: -30,
-                width: 90,
-                height: 90,
+                top: -50,
+                width: 100,
+                height: 100,
                 borderRadius: 99999,
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "#16247d",
+                backgroundColor: "#EC8305",
+                shadowColor: "#FFC400",
+                shadowOffset: { width: 30, height: 20 },
+                shadowOpacity: 60,
+                elevation: 18,
               }}
             >
               <Text
-                style={{ fontSize: 24, color: "white", fontWeight: "bold" }}
+                style={{ fontSize: 32, color: "white", fontWeight: "bold" }}
               >
                 SOS
               </Text>
@@ -75,22 +85,24 @@ const TabStructure = () => {
         }}
       />
       <Tabs.Screen
-        name="setting"
+        name="chat"
         options={{
-          tabBarLabel: "Setting",
-          tabBarActiveTintColor: "#EB3030",
+          headerShown: false,
+          tabBarLabel: "Hỗ trợ",
+          tabBarActiveTintColor: "#DBD3D3",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="settings" size={24} color={color} />
+            <MaterialIcons name="support-agent" size={32} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="recording"
         options={{
-          tabBarLabel: "Search",
+          headerShown: false,
+          tabBarLabel: "Camera",
           tabBarActiveTintColor: "#EB3030",
           tabBarIcon: ({ color }) => (
-            <Feather name="search" size={24} color={color} />
+            <FontAwesome5 name="camera" size={32} color={color} />
           ),
         }}
       />
